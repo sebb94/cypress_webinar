@@ -1,0 +1,26 @@
+{
+  "name": "cypress_webinar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:d": "cypress run --record --key 341b4a4b-6e47-4b41-ac90-61e5a40f9714 --spec cypress/integration/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebb94/cypress_webinar.git"
+  },
+  "author": "Sebastian Gągor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebb94/cypress_webinar/issues"
+  },
+  "homepage": "https://github.com/sebb94/cypress_webinar#readme",
+  "dependencies": {
+    "cypress": "^5.5.0",
+    "prettier": "^2.1.2"
+  }
+}
