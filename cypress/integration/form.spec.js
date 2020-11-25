@@ -6,7 +6,6 @@ describe('Should sent contact message', () => {
     });
 
     it('should incorrect fill form', () => {
-        //cy.get('.preloader').invoke('css', 'display', 'none')
         cy.contains('Zgoda').click()
         cy.wait(1000)
         cy.get('.acceptance-221 input[type="checkbox"]').check()
@@ -20,12 +19,22 @@ describe('Should sent contact message', () => {
     });
 
     it('should correct fill form', () => {
-        cy.get('input[placeholder="Imię"]').type("Testowy")
-        cy.get('input[placeholder="E-mail"]').type("gagor.sebastian@gmail.com")
-        cy.get('input[placeholder="Temat"]').type("Testowy temat")
-        cy.get('[placeholder="Wiadomość"]').type("Testowa wiadomość")
-        cy.get('.acceptance-221 input[type="checkbox"]').check()
-        cy.contains('Wyślij wiadomość').click()
+        cy.fixture('subjects').then(subject =>{
+            let randomNumber = Math.floor(Math.random() * 3) + 1;
+            cy.get('input[placeholder="Imię"]').type("Testowy")
+            cy.get('input[placeholder="E-mail"]').type("gagor.sebastian@gmail.com")
+            if(randomNumber == 1){
+                cy.get('[placeholder="Temat"]').type(subject.subject_1)
+            }else if( randomNumber == 2){
+                cy.get('[placeholder="Temat"]').type(subject.subject_2)
+            } else if (randomNumber == 3){
+                cy.get('[placeholder="Temat"]').type(subject.subject_3)
+            }
+            cy.get('[placeholder="Wiadomość"]').type("Testowa wiadomość")
+            cy.get('.acceptance-221 input[type="checkbox"]').check()
+            cy.contains('Wyślij wiadomość').click()
+        })
+    
     });
 
     it('should thank you message be visible', () => {
